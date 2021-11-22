@@ -7,6 +7,7 @@ import { getContacts } from "../../redux/selectors";
 function Form() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  const onSubmit = (name, number) => dispatch(addContact(name, number));
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -38,7 +39,7 @@ function Form() {
       return;
     }
 
-    dispatch(addContact(name, number));
+    onSubmit({ name, number });
     reset();
   };
 
